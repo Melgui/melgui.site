@@ -1,3 +1,4 @@
+/* General styles for the page */
 body {
   font-family: 'Arial', sans-serif;
   background-color: #fef6e4; /* Light pastel background */
@@ -7,6 +8,7 @@ body {
   justify-content: center;
   height: 100vh;
   margin: 0;
+  position: relative; /* Added relative positioning to contain absolutely positioned button */
 }
 
 .container {
@@ -76,6 +78,7 @@ button {
   cursor: pointer;
   color: #ffb3b3; /* Light pastel color */
   transition: color 0.3s ease;
+  z-index: 100; /* Ensure the button is on top of other elements */
 }
 
 /* Default (Day theme) colors */
