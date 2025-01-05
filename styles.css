@@ -8,7 +8,7 @@ body {
   justify-content: center;
   height: 100vh;
   margin: 0;
-  position: relative; /* Added relative positioning to contain absolutely positioned button */
+  position: relative; /* To contain absolutely positioned button */
 }
 
 .container {
@@ -49,6 +49,7 @@ body {
   color: #272343; /* Dark pastel text */
 }
 
+/* Make the layout responsive for mobile */
 @media (max-width: 600px) {
   .title {
     font-size: 1.8rem;
@@ -63,13 +64,9 @@ body {
   }
 }
 
-button {
-  touch-action: manipulation;
-}
-
 /* Theme Toggle Button */
 .theme-toggle-btn {
-  position: absolute;
+  position: fixed; /* Fixed position to stay in the top-right corner */
   top: 20px;
   right: 20px;
   background-color: transparent;
@@ -79,6 +76,15 @@ button {
   color: #ffb3b3; /* Light pastel color */
   transition: color 0.3s ease;
   z-index: 100; /* Ensure the button is on top of other elements */
+}
+
+/* Adjust button position and size on mobile */
+@media (max-width: 400px) {
+  .theme-toggle-btn {
+    font-size: 20px; /* Smaller font size for smaller screens */
+    top: 10px; /* Adjust top position */
+    right: 10px; /* Adjust right position */
+  }
 }
 
 /* Default (Day theme) colors */
