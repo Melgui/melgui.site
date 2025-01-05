@@ -17,3 +17,10 @@ decreaseBtn.addEventListener('click', () => {
 function updateDisplay() {
   countDisplay.textContent = count;
 }
+
+document.addEventListener('touchstart', function (e) {
+  if (e.target.tagName.toLowerCase() === 'button') {
+    e.preventDefault(); // Prevent zooming when tapping buttons
+  }
+}, { passive: false });
+
