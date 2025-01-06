@@ -67,9 +67,11 @@ if (isNightMode) {
   toggleThemeBtn.textContent = "🌞"; // Si ya está en modo noche, mostrar el ícono de sol
 }
 
+updateDisplay();
+
 // Volver a la página principal
 backToHomeBtn.addEventListener('click', () => {
-  window.location.href = './index.html'; // Redirigir a la página principal
+  window.location.href = '../index.html'; // Redirigir a la página principal
 });
 
 // Restablecer contador a 0
@@ -77,7 +79,5 @@ resetCounterBtn.addEventListener('click', () => {
   count = 0;
   updateDisplay();
 });
-
-updateDisplay();
 
 toggleThemeBtn.addEventListener('click', toggleTheme);
