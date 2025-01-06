@@ -69,7 +69,7 @@ if (isNightMode) {
 
 // Volver a la página principal
 backToHomeBtn.addEventListener('click', () => {
-  window.location.href = '../index.html'; // Redirigir a la página principal
+  window.location.href = './index.html'; // Redirigir a la página principal
 });
 
 // Restablecer contador a 0
