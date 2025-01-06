@@ -4,11 +4,14 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, viewport-fit=cover">
   <title>Counter</title>
-  <link rel="stylesheet" href="/counter/styles.css"> <!-- Enlace al CSS del contador -->
+  <link rel="stylesheet" href="/counter/styles.css">
 </head>
 <body>
   <div class="counter-page">
-    <button id="toggleTheme" class="theme-toggle-btn">🌙</button>
+    <div class="button-container">
+      <button id="homeBtn" class="back-home-btn">🏠</button>
+      <button id="toggleTheme" class="theme-toggle-btn">🌙</button>
+    </div>
     <div class="container">
       <h1 class="title">Contador</h1>
       <div class="counter">
@@ -16,6 +19,7 @@
         <span id="count">0</span>
         <button class="btn" id="increase">+</button>
       </div>
+      <button id="resetCounter" class="reset-btn">Restablecer</button> <!-- Botón de restablecer -->
     </div>
   </div>
   <script src="script.js"></script>

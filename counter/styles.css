@@ -1,5 +1,4 @@
-/* Estilos específicos solo para la página /counter */
-
+/* General styles for the counter page */
 body {
   font-family: 'Arial', sans-serif;
   background-color: #fef6e4; /* Light pastel background */
@@ -47,9 +46,46 @@ body {
   font-weight: bold;
   width: 60px;
   text-align: center;
-  color: #272343;
+  color: #272343; /* Dark pastel text */
 }
 
+/* Buttons to reset and go to the homepage */
+#resetCounter, #homeBtn {
+  font-size: 1.2rem; /* Smaller font size */
+  padding: 8px 15px; /* Smaller padding */
+  background-color: #e3f6f5; /* Soft pastel blue */
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+  margin-top: 15px;
+}
+
+#resetCounter:hover, #homeBtn:hover {
+  background-color: #bae8e8; /* Slightly darker pastel blue */
+}
+
+#resetCounter {
+  background-color: #ffebf5; /* Light pastel pink */
+}
+
+#resetCounter:hover {
+  background-color: #ffccf9; /* Slightly darker pastel pink */
+}
+
+#homeBtn {
+  background-color: transparent; /* Transparent background */
+  color: #ffb3b3; /* Light pastel color */
+  font-size: 1.5rem; /* Adjust font size */
+  padding: 10px; /* Adjust padding */
+  margin-top: 0; /* Remove extra margin-top */
+}
+
+#homeBtn:hover {
+  color: #f39c12; /* Change color on hover */
+}
+
+/* Responsive layout for mobile */
 @media (max-width: 600px) {
   .title {
     font-size: 1.8rem;
@@ -64,18 +100,28 @@ body {
   }
 }
 
-/* Tema del botón para cambiar entre día y noche */
+/* Theme Toggle Button */
 .theme-toggle-btn {
-  position: fixed;
+  position: fixed; /* Fixed position to stay in the top-right corner */
   top: 20px;
   right: 20px;
   background-color: transparent;
   border: none;
   font-size: 24px;
   cursor: pointer;
-  color: #ffb3b3;
+  color: #ffb3b3; /* Light pastel color */
   transition: color 0.3s ease;
   z-index: 100;
+}
+
+/* Home and Theme Buttons on top */
+.button-container {
+  position: fixed;
+  top: 20px;
+  left: 20px;
+  display: flex;
+  gap: 10px; /* Space between the buttons */
+  z-index: 10;
 }
 
 @media (max-width: 400px) {
@@ -86,7 +132,7 @@ body {
   }
 }
 
-/* Tema de día */
+/* Day theme (default) */
 body {
   background-color: #fef6e4;
   color: #272343;
@@ -100,7 +146,7 @@ body {
   color: #ffb3b3;
 }
 
-/* Tema de noche */
+/* Night theme */
 body.night {
   background-color: #2c3e50;
   color: #ecf0f1;

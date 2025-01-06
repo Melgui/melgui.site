@@ -1,33 +1,34 @@
-let count = localStorage.getItem('count') ? parseInt(localStorage.getItem('count')) : 0; // Cargar el contador desde localStorage si existe
-let isNightMode = localStorage.getItem('isNightMode') === 'true'; // Cargar el estado del tema desde localStorage
+let count = localStorage.getItem('count') ? parseInt(localStorage.getItem('count')) : 0;
+let isNightMode = localStorage.getItem('isNightMode') === 'true';
 
 const countDisplay = document.getElementById('count');
 const increaseBtn = document.getElementById('increase');
 const decreaseBtn = document.getElementById('decrease');
 const toggleThemeBtn = document.getElementById('toggleTheme');
+const resetCounterBtn = document.getElementById('resetCounter');
+const backToHomeBtn = document.getElementById('homeBtn');
 
-let intervalId = null; // Variable para almacenar el intervalo
+let intervalId = null;
 
 // Actualiza el valor mostrado en la interfaz
 function updateDisplay() {
   countDisplay.textContent = count;
-  localStorage.setItem('count', count); // Guardar el valor del contador en localStorage
+  localStorage.setItem('count', count);
 }
 
 // Incremento o decremento continuo
 function startChangingValue(changeBy) {
-  if (intervalId) return; // Evitar que se inicie otro intervalo si ya hay uno en ejecución
+  if (intervalId) return;
 
   intervalId = setInterval(() => {
     count += changeBy;
     updateDisplay();
-  }, 50); // Cambiar cada 50ms (más rápido que antes)
+  }, 50);
 }
 
-// Detiene el incremento/decremento
 function stopChangingValue() {
   clearInterval(intervalId);
-  intervalId = null; // Limpiar el intervalo
+  intervalId = null;
 }
 
 // Event listeners para click y mantener presionado
@@ -41,32 +42,42 @@ decreaseBtn.addEventListener('mouseleave', stopChangingValue);
 
 // Función para alternar entre los temas
 function toggleTheme() {
-  isNightMode = !isNightMode; // Cambiar el estado del tema
+  isNightMode = !isNightMode;
 
-  // Aplicar los cambios de clase según el tema
   if (isNightMode) {
     document.body.classList.add('night');
     toggleThemeBtn.classList.add('night');
     countDisplay.classList.add('night');
-    toggleThemeBtn.textContent = "🌞"; // Icono de sol para día
+    toggleThemeBtn.textContent = "🌞";
   } else {
     document.body.classList.remove('night');
     toggleThemeBtn.classList.remove('night');
     countDisplay.classList.remove('night');
-    toggleThemeBtn.textContent = "🌙"; // Icono de luna para noche
+    toggleThemeBtn.textContent = "🌙";
   }
 
-  // Guardar el estado del tema en localStorage
   localStorage.setItem('isNightMode', isNightMode);
 }
 
-// Cargar el estado inicial del tema
+// Aplicar el tema al cargar la página
 if (isNightMode) {
-  toggleTheme(); // Activar el tema nocturno si está guardado en localStorage
+  document.body.classList.add('night');
+  toggleThemeBtn.classList.add('night');
+  countDisplay.classList.add('night');
+  toggleThemeBtn.textContent = "🌞"; // Si ya está en modo noche, mostrar el ícono de sol
 }
 
-// Inicializar el contador con el valor de localStorage
+// Volver a la página principal
+backToHomeBtn.addEventListener('click', () => {
+  window.location.href = '../index.html'; // Redirigir a la página principal
+});
+
+// Restablecer contador a 0
+resetCounterBtn.addEventListener('click', () => {
+  count = 0;
+  updateDisplay();
+});
+
 updateDisplay();
 
-// Event listener para el botón de tema
 toggleThemeBtn.addEventListener('click', toggleTheme);
