@@ -159,3 +159,7 @@ body.night {
 .theme-toggle-btn.night {
   color: #f39c12;
 }
+
+html {
+  touch-action: manipulation;
+}

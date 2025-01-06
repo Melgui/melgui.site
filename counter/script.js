@@ -92,3 +92,7 @@ resetCounterBtn.addEventListener('click', () => {
 });
 
 toggleThemeBtn.addEventListener('click', toggleTheme);
+
+document.addEventListener('dblclick', function (e) {
+  e.preventDefault(); // Evita el comportamiento de zoom.
+});
