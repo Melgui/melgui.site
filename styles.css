@@ -1,115 +1,41 @@
-/* General styles for the page */
 body {
-  font-family: 'Arial', sans-serif;
-  background-color: #fef6e4; /* Light pastel background */
-  color: #272343; /* Dark pastel text */
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  height: 100vh;
+  font-family: Arial, sans-serif;
+  text-align: center;
+  padding: 20px;
   margin: 0;
-  position: relative; /* To contain absolutely positioned button */
 }
 
-.container {
-  text-align: center;
+#home-container {
+  margin-top: 100px;
 }
 
-.title {
-  font-size: 2.5rem;
-  margin-bottom: 20px;
+h1 {
+  font-size: 3em;
+  color: #333;
 }
 
-.counter {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 15px;
+h2 {
+  font-size: 1.5em;
+  color: #666;
 }
 
-.btn {
-  font-size: 2rem;
+hr {
+  margin: 20px auto;
+  width: 50%;
+  border: 1px solid #ddd;
+}
+
+.button-container {
+  margin-top: 20px;
+}
+
+.button {
+  display: inline-block;
   padding: 10px 20px;
-  background-color: #e3f6f5;
-  border: none;
+  margin: 10px;
+  font-size: 1em;
+  color: white;
+  background-color: #007BFF;
+  text-decoration: none;
   border-radius: 5px;
-  cursor: pointer;
-  transition: background-color 0.3s;
-}
-
-.btn:hover {
-  background-color: #bae8e8;
-}
-
-#count {
-  font-size: 2rem;
-  font-weight: bold;
-  width: 60px;
-  text-align: center;
-  color: #272343; /* Dark pastel text */
-}
-
-/* Responsive layout for mobile */
-@media (max-width: 600px) {
-  .title {
-    font-size: 1.8rem;
-  }
-
-  .btn {
-    font-size: 1.5rem;
-  }
-
-  #count {
-    font-size: 1.8rem;
-  }
-}
-
-/* Theme Toggle Button */
-.theme-toggle-btn {
-  position: fixed; /* Fixed position to stay in the top-right corner */
-  top: 20px;
-  right: 20px;
-  background-color: transparent;
-  border: none;
-  font-size: 24px;
-  cursor: pointer;
-  color: #ffb3b3; /* Light pastel color */
-  transition: color 0.3s ease;
-  z-index: 100; /* Ensure the button is on top of other elements */
-}
-
-@media (max-width: 400px) {
-  .theme-toggle-btn {
-    font-size: 20px;
-    top: 10px;
-    right: 10px;
-  }
-}
-
-/* Day theme (default) */
-body {
-  background-color: #fef6e4; /* Light pastel background */
-  color: #272343; /* Dark pastel text */
-}
-
-#count {
-  color: #ffb3b3; /* Pastel pink */
-}
-
-.theme-toggle-btn.day {
-  color: #ffb3b3; /* Light pastel pink */
-}
-
-/* Night theme */
-body.night {
-  background-color: #2c3e50; /* Dark background */
-  color: #ecf0f1; /* Light pastel text */
-}
-
-#count.night {
-  color: #f39c12; /* Pastel yellow */
-}
-
-.theme-toggle-btn.night {
-  color: #f39c12; /* Light pastel yellow */
 }
