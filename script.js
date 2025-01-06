@@ -1,58 +1,90 @@
 let count = 0;
+let intervalId = null;
+let isLongPress = false; // Indica si se está manteniendo presionado el botón
 
 const countDisplay = document.getElementById('count');
 const increaseBtn = document.getElementById('increase');
 const decreaseBtn = document.getElementById('decrease');
 const toggleThemeBtn = document.getElementById('toggleTheme');
 
-// Event listeners for increasing and decreasing the count (for both touch and click)
-increaseBtn.addEventListener('click', () => {
-  count++;
-  updateDisplay();
-});
+// Actualiza el valor mostrado
+function updateDisplay() {
+  countDisplay.textContent = count;
+}
 
-decreaseBtn.addEventListener('click', () => {
-  count--;
-  updateDisplay();
-});
+// Incremento o decremento continuo
+function startChangingValue(changeBy) {
+  isLongPress = false; // Resetear flag
+  intervalId = setTimeout(() => {
+    isLongPress = true; // Si pasa el tiempo, es una pulsación larga
+    intervalId = setInterval(() => {
+      count += changeBy;
+      updateDisplay();
+    }, 100); // Cambia cada 100ms (puedes ajustarlo)
+  }, 300); // Tiempo para activar el modo continuo
+}
 
-increaseBtn.addEventListener('touchend', () => {
-  count++;
-  updateDisplay();
-});
+// Detiene el incremento/decremento
+function stopChangingValue(changeBy) {
+  clearTimeout(intervalId);
+  clearInterval(intervalId);
+  intervalId = null;
+  if (!isLongPress) {
+    // Si no fue una pulsación larga, cambiar solo una vez
+    count += changeBy;
+    updateDisplay();
+  }
+}
 
-decreaseBtn.addEventListener('touchend', () => {
-  count--;
-  updateDisplay();
-});
+// Event listeners para click y mantener presionado
+increaseBtn.addEventListener('mousedown', () => startChangingValue(1));
+increaseBtn.addEventListener('mouseup', () => stopChangingValue(1));
+increaseBtn.addEventListener('mouseleave', () => stopChangingValue(1));
 
-// Event listener for the theme toggle button
+decreaseBtn.addEventListener('mousedown', () => startChangingValue(-1));
+decreaseBtn.addEventListener('mouseup', () => stopChangingValue(-1));
+decreaseBtn.addEventListener('mouseleave', () => stopChangingValue(-1));
+
+// Eventos touch para dispositivos móviles (solo para incrementar y decrementar)
+increaseBtn.addEventListener('touchstart', (e) => {
+  e.preventDefault(); // Evita zoom solo en botones de +/-
+  startChangingValue(1);
+});
+increaseBtn.addEventListener('touchend', () => stopChangingValue(1));
+
+decreaseBtn.addEventListener('touchstart', (e) => {
+  e.preventDefault(); // Evita zoom solo en botones de +/-
+  startChangingValue(-1);
+});
+decreaseBtn.addEventListener('touchend', () => stopChangingValue(-1));
+
+// Event listener para el botón de tema
 toggleThemeBtn.addEventListener('click', toggleTheme);
 toggleThemeBtn.addEventListener('touchstart', (e) => {
-  e.preventDefault(); // Prevent default action on touch to avoid accidental zooming
+  e.preventDefault(); // Evita problemas táctiles en el botón de tema
   toggleTheme();
 });
 
-// Theme toggle function
+// Función para alternar entre temas
 function toggleTheme() {
   document.body.classList.toggle('night');
   toggleThemeBtn.classList.toggle('night');
   countDisplay.classList.toggle('night');
 
   if (document.body.classList.contains('night')) {
-    toggleThemeBtn.textContent = "🌞"; // Sun icon for day
+    toggleThemeBtn.textContent = "🌞"; // Icono de sol para día
   } else {
-    toggleThemeBtn.textContent = "🌙"; // Moon icon for night
+    toggleThemeBtn.textContent = "🌙"; // Icono de luna para noche
   }
 }
 
-function updateDisplay() {
-  countDisplay.textContent = count;
-}
-
-// Prevent zooming on button presses
-document.addEventListener('touchstart', function (e) {
-  if (e.target.tagName.toLowerCase() === 'button') {
-    e.preventDefault(); // Prevent zooming when tapping buttons
-  }
-}, { passive: false });
+// Prevenir zoom en botones (general)
+document.addEventListener(
+  'touchstart',
+  function (e) {
+    if (e.target.tagName.toLowerCase() === 'button' && e.target !== toggleThemeBtn) {
+      e.preventDefault(); // Prevenir zoom al tocar botones (excepto el de tema)
+    }
+  },
+  { passive: false }
+);
