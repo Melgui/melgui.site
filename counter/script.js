@@ -23,7 +23,7 @@ function startChangingValue(changeBy) {
   intervalId = setInterval(() => {
     count += changeBy;
     updateDisplay();
-  }, 50);  // Cambia el valor cada 50ms
+  }, 50); // Cambia el valor cada 50ms
 }
 
 function stopChangingValue() {
@@ -31,25 +31,25 @@ function stopChangingValue() {
   intervalId = null;
 }
 
-// Event listeners para incremento y decremento con click
-increaseBtn.addEventListener('click', () => {
-  count += 1;
-  updateDisplay();
-});
+// Event listeners para incremento y decremento con click y táctil
+function attachContinuousChangeEvents(button, changeBy) {
+  // Ratón
+  button.addEventListener('mousedown', () => startChangingValue(changeBy));
+  button.addEventListener('mouseup', stopChangingValue);
+  button.addEventListener('mouseleave', stopChangingValue);
 
-decreaseBtn.addEventListener('click', () => {
-  count -= 1;
-  updateDisplay();
-});
+  // Pantalla táctil
+  button.addEventListener('touchstart', (e) => {
+    e.preventDefault(); // Evitar zoom o scroll
+    startChangingValue(changeBy);
+  });
+  button.addEventListener('touchend', stopChangingValue);
+  button.addEventListener('touchcancel', stopChangingValue); // Cancelar si el toque es interrumpido
+}
 
-// Event listeners para mantener presionado y cambiar continuamente
-increaseBtn.addEventListener('mousedown', () => startChangingValue(1));
-increaseBtn.addEventListener('mouseup', stopChangingValue);
-increaseBtn.addEventListener('mouseleave', stopChangingValue);
-
-decreaseBtn.addEventListener('mousedown', () => startChangingValue(-1));
-decreaseBtn.addEventListener('mouseup', stopChangingValue);
-decreaseBtn.addEventListener('mouseleave', stopChangingValue);
+// Vincular eventos de cambio continuo a botones
+attachContinuousChangeEvents(increaseBtn, 1);
+attachContinuousChangeEvents(decreaseBtn, -1);
 
 // Función para alternar entre los temas
 function toggleTheme() {
@@ -93,9 +93,18 @@ resetCounterBtn.addEventListener('click', () => {
 
 toggleThemeBtn.addEventListener('click', toggleTheme);
 
-document.addEventListener('dblclick', function (e) {
-  // Evitar el zoom, pero solo en elementos no críticos
-  if (!e.target.closest('.contador-boton')) { 
-    e.preventDefault();
-  }
+// Prevenir zoom al hacer doble clic en toda la página
+document.addEventListener('dblclick', (e) => {
+  e.preventDefault(); // Evitar el zoom
 });
+
+// Deshabilitar zoom táctil con gestos (como pinch-to-zoom)
+document.addEventListener('touchstart', (e) => {
+  if (e.touches.length > 1) {
+    e.preventDefault(); // Si hay más de un dedo, evitar comportamiento predeterminado
+  }
+}, { passive: false });
+
+document.addEventListener('gesturestart', (e) => e.preventDefault());
+document.addEventListener('gesturechange', (e) => e.preventDefault());
+document.addEventListener('gestureend', (e) => e.preventDefault());
