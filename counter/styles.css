@@ -1,5 +1,5 @@
 /* General styles for the page */
-body {
+.counter-page { /* Estilos solo aplicados a /counter */
   font-family: 'Arial', sans-serif;
   background-color: #fef6e4; /* Light pastel background */
   color: #272343; /* Dark pastel text */
@@ -11,23 +11,23 @@ body {
   position: relative; /* To contain absolutely positioned button */
 }
 
-.container {
+.counter-page .container { /* Estilo para la sección del contador */
   text-align: center;
 }
 
-.title {
+.counter-page .title {
   font-size: 2.5rem;
   margin-bottom: 20px;
 }
 
-.counter {
+.counter-page .counter {
   display: flex;
   align-items: center;
   justify-content: center;
   gap: 15px;
 }
 
-.btn {
+.counter-page .btn {
   font-size: 2rem;
   padding: 10px 20px;
   background-color: #e3f6f5;
@@ -37,11 +37,11 @@ body {
   transition: background-color 0.3s;
 }
 
-.btn:hover {
+.counter-page .btn:hover {
   background-color: #bae8e8;
 }
 
-#count {
+.counter-page #count {
   font-size: 2rem;
   font-weight: bold;
   width: 60px;
@@ -51,21 +51,21 @@ body {
 
 /* Responsive layout for mobile */
 @media (max-width: 600px) {
-  .title {
+  .counter-page .title {
     font-size: 1.8rem;
   }
 
-  .btn {
+  .counter-page .btn {
     font-size: 1.5rem;
   }
 
-  #count {
+  .counter-page #count {
     font-size: 1.8rem;
   }
 }
 
 /* Theme Toggle Button */
-.theme-toggle-btn {
+.counter-page .theme-toggle-btn {
   position: fixed; /* Fixed position to stay in the top-right corner */
   top: 20px;
   right: 20px;
@@ -79,7 +79,7 @@ body {
 }
 
 @media (max-width: 400px) {
-  .theme-toggle-btn {
+  .counter-page .theme-toggle-btn {
     font-size: 20px;
     top: 10px;
     right: 10px;
@@ -87,29 +87,29 @@ body {
 }
 
 /* Day theme (default) */
-body {
+.counter-page body {
   background-color: #fef6e4; /* Light pastel background */
   color: #272343; /* Dark pastel text */
 }
 
-#count {
+.counter-page #count {
   color: #ffb3b3; /* Pastel pink */
 }
 
-.theme-toggle-btn.day {
+.counter-page .theme-toggle-btn.day {
   color: #ffb3b3; /* Light pastel pink */
 }
 
 /* Night theme */
-body.night {
+.counter-page body.night {
   background-color: #2c3e50; /* Dark background */
   color: #ecf0f1; /* Light pastel text */
 }
 
-#count.night {
+.counter-page #count.night {
   color: #f39c12; /* Pastel yellow */
 }
 
-.theme-toggle-btn.night {
+.counter-page .theme-toggle-btn.night {
   color: #f39c12; /* Light pastel yellow */
 }
