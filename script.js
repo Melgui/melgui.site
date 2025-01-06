@@ -1,28 +1,26 @@
 let isNightMode = localStorage.getItem('isNightMode') === 'true';
-const countDisplay = document.getElementById('count');
+
 const toggleThemeBtn = document.getElementById('toggleTheme');
 
 // Función para alternar entre los temas
 function toggleTheme() {
-  document.body.classList.toggle('night');
-  toggleThemeBtn.classList.toggle('night');
-  countDisplay.classList.toggle('night');
+  isNightMode = !isNightMode;
 
-  if (document.body.classList.contains('night')) {
-    toggleThemeBtn.textContent = "🌞"; // Icono de sol para día
+  if (isNightMode) {
+    document.body.classList.add('night');
+    toggleThemeBtn.textContent = "🌞"; // Modo noche, ícono de sol
   } else {
-    toggleThemeBtn.textContent = "🌙"; // Icono de luna para noche
+    document.body.classList.remove('night');
+    toggleThemeBtn.textContent = "🌙"; // Modo día, ícono de luna
   }
 
-  localStorage.setItem('isNightMode', document.body.classList.contains('night'));
+  localStorage.setItem('isNightMode', isNightMode);
 }
 
 // Aplicar el tema al cargar la página
 if (isNightMode) {
   document.body.classList.add('night');
-  toggleThemeBtn.classList.add('night');
-  countDisplay.classList.add('night');
-  toggleThemeBtn.textContent = "🌞"; // Si ya está en modo noche, mostrar el ícono de sol
+  toggleThemeBtn.textContent = "🌞"; // Si está en modo noche, mostrar el ícono de sol
 }
 
 toggleThemeBtn.addEventListener('click', toggleTheme);
