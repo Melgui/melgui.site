@@ -23,7 +23,7 @@ function startChangingValue(changeBy) {
   intervalId = setInterval(() => {
     count += changeBy;
     updateDisplay();
-  }, 50);
+  }, 50);  // Cambia el valor cada 50ms
 }
 
 function stopChangingValue() {
@@ -31,7 +31,18 @@ function stopChangingValue() {
   intervalId = null;
 }
 
-// Event listeners para click y mantener presionado
+// Event listeners para incremento y decremento con click
+increaseBtn.addEventListener('click', () => {
+  count += 1;
+  updateDisplay();
+});
+
+decreaseBtn.addEventListener('click', () => {
+  count -= 1;
+  updateDisplay();
+});
+
+// Event listeners para mantener presionado y cambiar continuamente
 increaseBtn.addEventListener('mousedown', () => startChangingValue(1));
 increaseBtn.addEventListener('mouseup', stopChangingValue);
 increaseBtn.addEventListener('mouseleave', stopChangingValue);
@@ -48,12 +59,12 @@ function toggleTheme() {
     document.body.classList.add('night');
     toggleThemeBtn.classList.add('night');
     countDisplay.classList.add('night');
-    toggleThemeBtn.textContent = "🌞";
+    toggleThemeBtn.textContent = "🌞"; // Modo noche, icono de sol
   } else {
     document.body.classList.remove('night');
     toggleThemeBtn.classList.remove('night');
     countDisplay.classList.remove('night');
-    toggleThemeBtn.textContent = "🌙";
+    toggleThemeBtn.textContent = "🌙"; // Modo día, icono de luna
   }
 
   localStorage.setItem('isNightMode', isNightMode);
@@ -64,7 +75,7 @@ if (isNightMode) {
   document.body.classList.add('night');
   toggleThemeBtn.classList.add('night');
   countDisplay.classList.add('night');
-  toggleThemeBtn.textContent = "🌞"; // Si ya está en modo noche, mostrar el ícono de sol
+  toggleThemeBtn.textContent = "🌞"; // Si está en modo noche, mostrar sol
 }
 
 updateDisplay();
