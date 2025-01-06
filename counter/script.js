@@ -94,5 +94,8 @@ resetCounterBtn.addEventListener('click', () => {
 toggleThemeBtn.addEventListener('click', toggleTheme);
 
 document.addEventListener('dblclick', function (e) {
-  e.preventDefault(); // Evita el comportamiento de zoom.
+  // Evitar el zoom, pero solo en elementos no críticos
+  if (!e.target.closest('.contador-boton')) { 
+    e.preventDefault();
+  }
 });

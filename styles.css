@@ -78,7 +78,3 @@ body.night .btn-explore {
 body.night .btn-explore:hover {
   background-color: #9b59b6; /* Darker purple on hover */
 }
-
-html {
-  touch-action: manipulation;
-}
