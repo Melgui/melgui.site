@@ -1,5 +1,6 @@
-/* General styles for the page */
-.counter-page { /* Estilos solo aplicados a /counter */
+/* Estilos específicos solo para la página /counter */
+
+body {
   font-family: 'Arial', sans-serif;
   background-color: #fef6e4; /* Light pastel background */
   color: #272343; /* Dark pastel text */
@@ -8,26 +9,26 @@
   justify-content: center;
   height: 100vh;
   margin: 0;
-  position: relative; /* To contain absolutely positioned button */
+  position: relative;
 }
 
-.counter-page .container { /* Estilo para la sección del contador */
+.container {
   text-align: center;
 }
 
-.counter-page .title {
+.title {
   font-size: 2.5rem;
   margin-bottom: 20px;
 }
 
-.counter-page .counter {
+.counter {
   display: flex;
   align-items: center;
   justify-content: center;
   gap: 15px;
 }
 
-.counter-page .btn {
+.btn {
   font-size: 2rem;
   padding: 10px 20px;
   background-color: #e3f6f5;
@@ -37,79 +38,78 @@
   transition: background-color 0.3s;
 }
 
-.counter-page .btn:hover {
+.btn:hover {
   background-color: #bae8e8;
 }
 
-.counter-page #count {
+#count {
   font-size: 2rem;
   font-weight: bold;
   width: 60px;
   text-align: center;
-  color: #272343; /* Dark pastel text */
+  color: #272343;
 }
 
-/* Responsive layout for mobile */
 @media (max-width: 600px) {
-  .counter-page .title {
+  .title {
     font-size: 1.8rem;
   }
 
-  .counter-page .btn {
+  .btn {
     font-size: 1.5rem;
   }
 
-  .counter-page #count {
+  #count {
     font-size: 1.8rem;
   }
 }
 
-/* Theme Toggle Button */
-.counter-page .theme-toggle-btn {
-  position: fixed; /* Fixed position to stay in the top-right corner */
+/* Tema del botón para cambiar entre día y noche */
+.theme-toggle-btn {
+  position: fixed;
   top: 20px;
   right: 20px;
   background-color: transparent;
   border: none;
   font-size: 24px;
   cursor: pointer;
-  color: #ffb3b3; /* Light pastel color */
+  color: #ffb3b3;
   transition: color 0.3s ease;
-  z-index: 100; /* Ensure the button is on top of other elements */
+  z-index: 100;
 }
 
 @media (max-width: 400px) {
-  .counter-page .theme-toggle-btn {
+  .theme-toggle-btn {
     font-size: 20px;
     top: 10px;
     right: 10px;
   }
 }
 
-/* Day theme (default) */
-.counter-page body {
-  background-color: #fef6e4; /* Light pastel background */
-  color: #272343; /* Dark pastel text */
+/* Tema de día */
+body {
+  background-color: #fef6e4;
+  color: #272343;
 }
 
-.counter-page #count {
-  color: #ffb3b3; /* Pastel pink */
+#count {
+  color: #ffb3b3;
 }
 
-.counter-page .theme-toggle-btn.day {
-  color: #ffb3b3; /* Light pastel pink */
+.theme-toggle-btn.day {
+  color: #ffb3b3;
 }
 
-/* Night theme */
-.counter-page body.night {
-  background-color: #2c3e50; /* Dark background */
-  color: #ecf0f1; /* Light pastel text */
+/* Tema de noche */
+body.night {
+  background-color: #2c3e50;
+  color: #ecf0f1;
 }
 
-.counter-page #count.night {
-  color: #f39c12; /* Pastel yellow */
+#count.night {
+  color: #f39c12;
 }
 
-.counter-page .theme-toggle-btn.night {
-  color: #f39c12; /* Light pastel yellow */
+.theme-toggle-btn.night {
+  color: #f39c12;
 }
