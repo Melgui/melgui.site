@@ -3,7 +3,7 @@ import React from 'react';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 
 //Styles
-import './styles/global.css';
+import './styles/Global.css';
 
 //Components
 import Header from './components/Header'; 
