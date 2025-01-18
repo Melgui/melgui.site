@@ -1,0 +1,52 @@
+.page-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  min-height: 100vh;
+  width: 100%;
+  box-sizing: border-box;
+  overflow: hidden;
+}
+
+.container,
+.buttons-container {
+  text-align: center;
+}
+
+.title {
+  font-size: 2.5rem;
+  margin-bottom: 20px;
+}
+
+.separator {
+  margin: 20px auto;
+  width: 80%;
+}
+
+.btn-explore {
+  display: inline-block;
+  font-size: 1.5rem;
+  padding: 12px 24px;
+  margin: 15px;
+  background-color: #ffb3b3;
+  border: none;
+  border-radius: 5px;
+  color: #fff;
+  text-decoration: none;
+  transition: background-color 0.3s ease;
+}
+
+.btn-explore:hover {
+  background-color: #ff8c8c;
+}
+
+/* Button theme changes */
+/* Quitarle el body.night y ponerlo en el componente */
+body.night .btn-explore {
+  background-color: #8e44ad; 
+}
+
+body.night .btn-explore:hover {
+  background-color: #9b59b6; 
+}
